@@ -9,12 +9,19 @@
 (declare-const cannibals Int)
 
 ;; helper functions that extract parameters from the state
+;; boat capacity
 (define-fun bcap  ((s State)) Int (select s 0))
+;; number of missionaries on the left shore
 (define-fun nm1 ((s State)) Int (select s 1))
+;; number of cannibals on the left shore
 (define-fun nc1 ((s State)) Int (select s 2))
+;; the boat position
 (define-fun bp ((s State)) Int (select s 3))
+;; number of missionaries on the right shore
 (define-fun nm2 ((s State)) Int (select s 4))
+;; number of cannibals on the right shore
 (define-fun nc2 ((s State)) Int (select s 5))
+
 
 ;; the validity function for states
 (define-fun valid ((s State)) Bool
@@ -26,8 +33,8 @@
       (= missionaries (+ (nm1 s) (nm2 s)))
       (= cannibals (+ (nc1 s) (nc2 s)))
       (and
-       (implies (> (nm1 s) 0) (>= (nm1 s) (nc1 s)))
-       (implies (> (nc2 s) 0) (>= (nm2 s) (nc2 s)))
+       (> (nm1 s) (nc1 s))
+       (> (nm2 s) (nc2 s))
        ))))
    (and
      (and

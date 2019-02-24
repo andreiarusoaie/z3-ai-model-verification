@@ -1,7 +1,7 @@
 Z3_OPTS = -v:10 -st 
 Z3 = z3 $(Z3_OPTS)
 
-all: pfs vfs
+all: vfs pfs
 
 pfs:
 				$(Z3) pfs.smt2 > pfs.out 2> pfs.err
