@@ -45,13 +45,10 @@
        (implies (> (nm1 s) 0) (>= (nm1 s) (nc1 s)))
        (implies (> (nc2 s) 0) (>= (nm2 s) (nc2 s)))
        ))))
-   (and
      (and
       (and (> missionaries 0) (> cannibals 0))
       (forall ((i Int)) (implies (and (>= i 0) (<= i 5)) (>= (select s i) 0)))
      )
-     (= (bcap s) 3)
-   )
   )
 )
 
@@ -142,6 +139,7 @@
 ;; parameter constraints
 (assert (< 2 missionaries))
 (assert (< 2 cannibals))
+(assert (< 2 (bcap state)))
 (assert (and (< 0 n) (<= n 100)))
 (assert (forall ((i Int))
            (implies (and (<= 0 i) (<= i (* n 2)))

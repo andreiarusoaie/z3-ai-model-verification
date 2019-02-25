@@ -1,3 +1,4 @@
+
 Z3_OPTS = -v:10 -st 
 Z3 = z3 $(Z3_OPTS)
 
